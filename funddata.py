@@ -44,6 +44,7 @@ for url in urls:
     datelist=list(reversed(datelist))
     codename=tree.find('fundcode').text + ' ' + tree.find('fundname').text
     namelist.append(codename)
+    print(codename, len(datelist), len(valuelist))
     x = np.array(datelist)
     y = np.array(valuelist)
     ts = pd.Series(y, index=x, name=codename)
@@ -53,11 +54,11 @@ for url in urls:
 df=pd.concat(timeserieslist, axis=1)
 for i in range(len(weightlist)):
     df[namelist[i]] = df[namelist[i]] * weightlist[i]
-    print(namelist[i], weightlist[i])
 
-namelist.append('portfolio')
-df[namelist[-1]] = df.sum(axis=1, skipna=False)
-plt.plot(df[namelist[-1]])
+portfolioname='portfolio'
+df[portfolioname] = df.sum(axis=1, skipna=False)
+plt.plot(df[portfolioname])
 myfont = fm.FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
+namelist.append(portfolioname+' '+', '.join(["{:.2f}".format(i) for i in weightlist]))
 plt.legend(namelist, prop=myfont)
 plt.show()
