@@ -23,11 +23,11 @@ if __name__ == "__main__":
     # read command line arguments
     if len(sys.argv) > 1:
         startdate = sys.argv[1]   
-    if len(sys.argv) > 2:
-        enddate = sys.argv[2]
-    if len(sys.argv) > 3:
-        del codelist[:]
-        codelist = sys.argv[3:]
+        if len(sys.argv) > 2:
+            enddate = sys.argv[2]
+            if len(sys.argv) > 3:
+                del codelist[:]
+                codelist = sys.argv[3:]
 
     # portfolio weights
     weightlist = [1/len(codelist) for i in codelist]
@@ -70,8 +70,8 @@ if __name__ == "__main__":
     df[portfolioname] = df2.sum(axis=1, skipna=False)
     std = df.std()
     retstd = (df.iloc[[-1]] - 1) / std
-    datatable = df.iloc[[0,-1]].append(std.rename('standard deviation')).append(retstd.iloc[0].rename('return/standard deviation'))
-    print(datatable)
+    risk_adjusted_return = df.iloc[[0,-1]].append(std.rename('standard deviation')).append(retstd.iloc[0].rename('return/standard deviation'))
+    print(risk_adjusted_return)
     
     plt.plot(df)
     myfont = fm.FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
