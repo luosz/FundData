@@ -17,8 +17,8 @@ import sys
 if __name__ == "__main__":
 
     startdate = '2013-01-01'
-    enddate = '2017-08-18'
-    codelist = ['160706', '050025', '000071']
+    enddate = '2017-08-31'
+    codelist = ['160706', '165511', '110011', '040008']
     
     # read command line arguments
     if len(sys.argv) > 1:
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         
         valuelist = [i/valuelist[-1] for i in reversed(valuelist)]
         datelist = list(reversed(datelist))
-        fundname = tree.find('fundname').text
+        fundname = tree.find('fundcode').text + ' ' + tree.find('fundname').text
         namelist.append(fundname)
         x = np.array(datelist)
         y = np.array(valuelist)
