@@ -1,4 +1,5 @@
-# This Python program fetches historical data of mutual funds from http://funds.hexun.com/
+# FundData
+## This Python program fetches historical data of mutual funds from http://funds.hexun.com/
 
 ## Usage
 ### Run funddata.py with command line arguments of start date, end date and a list of fund codes
