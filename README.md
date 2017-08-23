@@ -1,2 +1,2 @@
 # FundData
-![Screenshot](screenshot.jpg)
+![Screenshot](screenshot.png)
