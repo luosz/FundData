@@ -1,5 +1,5 @@
 # FundData
-#### This Python program fetches historical data of mutual funds from http://funds.hexun.com/
+#### This Python program fetches historical data of mutual funds in China from http://funds.hexun.com/
 The code was written in and tested with Python 3.6 (Anaconda 4.4.0).
 
 ## Usage
