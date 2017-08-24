@@ -19,6 +19,7 @@ if __name__ == "__main__":
     startdate = '2014-01-01'
     enddate = '2017-08-31'
     codelist = ['160706', '161017', '040008', '110022', '110011', '020003', '160211']
+    use_unitnetvalue = True
 
     # Read command line arguments
     if len(sys.argv) > 1:
@@ -53,8 +54,7 @@ if __name__ == "__main__":
         for child in tree:
             if child.tag == 'Data':
                 datelist.append(datetime.strptime(child.find('fld_enddate').text, '%Y-%m-%d'))
-#                valuelist.append(float(child.find('fld_unitnetvalue').text))
-                valuelist.append(float(child.find('fld_netvalue').text))
+                valuelist.append(float(child.find('fld_unitnetvalue' if use_unitnetvalue else 'fld_netvalue').text))
 
         # Create a time series from the lists
         valuelist = [i/valuelist[-1] for i in reversed(valuelist)]
