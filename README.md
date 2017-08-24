@@ -7,8 +7,8 @@ The code was written in and tested with Python 3.6 (Anaconda 4.4.0).
 #### Example:
 python funddata.py 2014-01-01 2017-08-31 160706 161017 040008 110022 110011 020003 160211
 
-## Unit net value
+## Plot of unit net values
 ![Screenshot](fld_unitnetvalue.png)
 
-## Accumulated net value
+## Plot of accumulated net values
 ![Screenshot](fld_netvalue.png)
