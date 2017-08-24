@@ -18,11 +18,11 @@ if __name__ == "__main__":
 
     startdate = '2014-01-01'
     enddate = '2017-08-31'
-    codelist = ['160706', '165511', '040008', '110022', '110011', '020003', '160211']
+    codelist = ['160706', '161017', '040008', '110022', '110011', '020003', '160211']
 
     # Read command line arguments
     if len(sys.argv) > 1:
-        startdate = sys.argv[1]   
+        startdate = sys.argv[1]
         if len(sys.argv) > 2:
             enddate = sys.argv[2]
             if len(sys.argv) > 3:
@@ -47,12 +47,13 @@ if __name__ == "__main__":
         data = urlopen(req).read()
         tree = ET.fromstring(data)
         
-        # Append dates and net asset values to the 2 lists respectively
+        # Append dates and net values to the lists respectively
         datelist = []
         valuelist = []
         for child in tree:
             if child.tag == 'Data':
                 datelist.append(datetime.strptime(child.find('fld_enddate').text, '%Y-%m-%d'))
+#                valuelist.append(float(child.find('fld_unitnetvalue').text))
                 valuelist.append(float(child.find('fld_netvalue').text))
 
         # Create a time series from the lists
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     risk_adjusted_return = df.iloc[[0,-1]].append(std.rename('standard deviation')).append(retstd.iloc[0].rename('return/standard deviation'))
     print(risk_adjusted_return)
 
-    # Plot the funds and the portfolio
+    # Plot funds and the portfolio
     plt.plot(df)
     myfont = fm.FontProperties(fname='C:/Windows/Fonts/msyh.ttc')
     namelist.append(portfolioname+' '+','.join(["{:.2f}".format(i) for i in weightlist]))
