@@ -13,12 +13,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import sys
+import os.path
 
 if __name__ == "__main__":
 
     startdate = '2014-01-01'
     enddate = '2017-08-31'
-    codelist = ['160706', '161017', '040008', '110022', '110011', '020003', '160211']
+    codelist = ['110020', '160119', '040008', '110011']
     use_unitnetvalue = True
 
     # Read command line arguments
@@ -30,15 +31,18 @@ if __name__ == "__main__":
                 del codelist[:]
                 codelist = sys.argv[3:]
 
+    # Print arguments
+    print(os.path.basename(sys.argv[0]), startdate, enddate, ' '.join(codelist))
+
     # portfolio weights
     weightlist = [1/len(codelist) for i in codelist]
 
-    print(startdate, enddate, codelist)
+    # Use unit net value or accumulated net value
+    value_field = 'fld_unitnetvalue' if use_unitnetvalue else 'fld_netvalue'
 
     # Generate URLs from start date, end date and code list
-    urls = ['http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode='
-          +fundcode+'&startdate='+startdate+'&enddate='+enddate
-          for fundcode in codelist]
+    urls = ['http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode={0}&startdate={1}&enddate={2}'
+            .format(i, startdate, enddate) for i in codelist]
     namelist = []
     timeserieslist = []
 
@@ -54,7 +58,7 @@ if __name__ == "__main__":
         for child in tree:
             if child.tag == 'Data':
                 datelist.append(datetime.strptime(child.find('fld_enddate').text, '%Y-%m-%d'))
-                valuelist.append(float(child.find('fld_unitnetvalue' if use_unitnetvalue else 'fld_netvalue').text))
+                valuelist.append(float(child.find(value_field).text))
 
         # Create a time series from the lists
         valuelist = [i/valuelist[-1] for i in reversed(valuelist)]
