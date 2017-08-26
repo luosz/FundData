@@ -21,7 +21,7 @@ if __name__ == "__main__":
     enddate = '2017-08-31'
     codelist = ['110020', '160119', '110011', '041008']
 
-    # 0 for unit net value, 1 for accumulated net value
+    # 0 for unit net value; 1 for accumulated net value
     value_field_index = 0
     value_field = ['fld_unitnetvalue', 'fld_netvalue'][value_field_index]
 
