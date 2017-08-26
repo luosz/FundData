@@ -19,8 +19,11 @@ if __name__ == "__main__":
 
     startdate = '2014-01-01'
     enddate = '2017-08-31'
-    codelist = ['110020', '160119', '040008', '110011']
-    use_unitnetvalue = True
+    codelist = ['110020', '160119', '110011', '041008']
+
+    # 0: Use unit net value; 1: Use accumulated net value
+    value_field_index = 1
+    value_field = ['fld_unitnetvalue', 'fld_netvalue'][value_field_index]
 
     # Read command line arguments
     if len(sys.argv) > 1:
@@ -36,9 +39,6 @@ if __name__ == "__main__":
 
     # portfolio weights
     weightlist = [1/len(codelist) for i in codelist]
-
-    # Use unit net value or accumulated net value
-    value_field = 'fld_unitnetvalue' if use_unitnetvalue else 'fld_netvalue'
 
     # Generate URLs from start date, end date and code list
     urls = ['http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode={0}&startdate={1}&enddate={2}'
