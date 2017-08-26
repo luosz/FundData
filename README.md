@@ -3,7 +3,7 @@
 The code was written in and tested with Python 3.6 (Anaconda 4.4.0).
 
 ## Usage
-#### Run funddata.py with command line arguments of start date, end date and a list of fund codes
+#### Run the program with command line arguments of start date, end date and a list of fund codes
 #### Example:
 python funddata.py 2014-01-01 2017-08-31 110020 160119 110011 041008
 
