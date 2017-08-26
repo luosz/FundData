@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     startdate = '2014-01-01'
     enddate = '2017-08-31'
-    codelist = ['110020', '160119', '110011', '041008']
+    codelist = ['110020', '160119', '110011', '040008']
 
     # 0 for unit net value; 1 for accumulated net value
     value_field_index = 0
