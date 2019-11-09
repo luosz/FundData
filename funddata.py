@@ -17,9 +17,9 @@ import os.path
 
 if __name__ == "__main__":
 
-    startdate = '2014-01-01'
-    enddate = '2017-08-31'
-    codelist = ['110020', '160119', '110011', '040008']
+    startdate = '2018-01-01'
+    enddate = '2019-11-08'
+    codelist = ['161128', '160140', '001061']
 
     # 0 for unit net value; 1 for accumulated net value
     value_field_index = 0
@@ -93,4 +93,5 @@ if __name__ == "__main__":
     namelist.append(portfolioname+' '+','.join(["{:.2f}".format(i) for i in weightlist]))
     plt.legend(namelist, prop=myfont)
     plt.grid()
-    plt.show()
+#    plt.show()
+    plt.savefig(value_field + '.png', dpi=300)
