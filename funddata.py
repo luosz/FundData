@@ -18,11 +18,11 @@ import os.path
 if __name__ == "__main__":
 
     startdate = '2018-01-01'
-    enddate = '2019-11-08'
-    codelist = ['161128', '160140', '001061']
+    enddate = '2019-12-31'
+    codelist = ['161128', '160140', '110020', '001061']
 
     # 0 for unit net value; 1 for accumulated net value
-    value_field_index = 0
+    value_field_index = 1
     value_field = ['fld_unitnetvalue', 'fld_netvalue'][value_field_index]
 
     # Read command line arguments
