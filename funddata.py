@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
     startdate = '2018-01-01'
     enddate = '2019-12-31'
+#    codelist = ['161128', '160140', '001061']
     codelist = ['161128', '160140', '110020', '001061']
 
     # 0 for unit net value; 1 for accumulated net value
