@@ -17,7 +17,7 @@ import os.path
 
 if __name__ == "__main__":
 
-    startdate = '2018-01-01'
+    startdate = '2017-01-01'
     enddate = '2020-12-31'
     codelist = ['161128', '513050', '510310']
 
