@@ -17,9 +17,9 @@ import os.path
 
 if __name__ == "__main__":
 
-    startdate = '2018-01-01'
-    enddate = '2020-12-31'
-    codelist = ['161130', '161128', '513050', '510310']
+    startdate = '2018-04-01'
+    enddate = '2021-04-01'
+    codelist = ['161130', '161128', '513050', '510310', '001832']
 
     # 0 for unit net value; 1 for accumulated net value
     value_field_index = 1
