@@ -17,9 +17,14 @@ import os.path
 
 if __name__ == "__main__":
 
-    startdate = '2018-04-01'
-    enddate = '2021-04-01'
-    codelist = ['161130', '161128', '513050', '001832', '001562']#, '510310']
+    startdate = '2018-06-01'
+    enddate = '2021-06-01'
+
+    # portfolio
+    codelist = ['161130', '161128', '513050', '001832', '001217']#, '510310']
+
+    # portfolio weights
+    weightlist = [0.25, 0.25, 0.25, 0.125, 0.125]
 
     # 0 for unit net value; 1 for accumulated net value
     value_field_index = 1
@@ -33,12 +38,13 @@ if __name__ == "__main__":
             if len(sys.argv) > 3:
                 del codelist[:]
                 codelist = sys.argv[3:]
+                weightlist = [1/len(codelist) for i in codelist]
+
+    if 'weightlist' not in locals():
+        weightlist = [1/len(codelist) for i in codelist]
 
     # Print arguments
     print(os.path.basename(sys.argv[0]), startdate, enddate, ' '.join(codelist))
-
-    # portfolio weights
-    weightlist = [1/len(codelist) for i in codelist]
 
     # Generate URLs from start date, end date and code list
     urls = ['http://data.funds.hexun.com/outxml/detail/openfundnetvalue.aspx?fundcode={0}&startdate={1}&enddate={2}'
