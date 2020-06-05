@@ -21,10 +21,10 @@ if __name__ == "__main__":
     enddate = '2021-06-01'
 
     # portfolio
-    codelist = ['161130', '161128', '513050', '001832', '001217']#, '510310']
+    codelist = ['161130', '161128', '513050', '001832']#, '510310']
 
     # portfolio weights
-    weightlist = [0.25, 0.25, 0.25, 0.125, 0.125]
+    # weightlist = [0.25, 0.25, 0.25, 0.125, 0.125]
 
     # 0 for unit net value; 1 for accumulated net value
     value_field_index = 1
